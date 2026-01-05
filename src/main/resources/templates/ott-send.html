@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>验证链接已发送</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .message {
+            margin-bottom: 30px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 5px;
+            border-left: 4px solid #2196f3;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background: #5a67d8;
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 20px;
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>✅ 验证邮件已发送</h2>
+
+    <div class="message">
+        <p>我们已经向您的邮箱发送了验证链接，请查收邮件并点击链接完成验证。</p>
+        <p>如果在几分钟内未收到邮件，请检查垃圾邮件文件夹。</p>
+    </div>
+
+    <div class="info-box">
+        <strong>注意事项:</strong>
+        <ul style="text-align: left; margin-top: 10px;">
+            <li>验证链接在发送后5分钟内有效</li>
+            <li>链接只能使用一次</li>
+            <li>请在安全的设备上打开链接</li>
+        </ul>
+    </div>
+
+    <a href="/login-ott" class="btn">我已收到验证邮件</a>
+    <a href="/login" class="back-link">← 返回登录页面</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页 - MFA演示系统</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        header {
+            background: #667eea;
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logout-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 8px 16px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .logout-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .welcome {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .welcome h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .welcome p {
+            color: #666;
+            font-size: 18px;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .feature-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .feature-card h3 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .admin-section {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+        
+        .admin-section h3 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+        
+        .admin-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .admin-links a {
+            background: #ffc107;
+            color: #333;
+            padding: 8px 16px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .admin-links a:hover {
+            background: #ffb300;
+        }
+        
+        .status-badge {
+            background: #4caf50;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔐 MFA演示系统</h1>
+            <div class="user-info">
+                <span>
+                    欢迎, <strong sec:authentication="name"></strong>
+                    <span sec:authorize="hasRole('ADMIN')">
+                        <span class="status-badge">管理员</span>
+                    </span>
+                </span>
+                <a href="/logout" class="logout-btn">退出登录</a>
+            </div>
+        </header>
+        
+        <div class="content">
+            <div class="welcome">
+                <h1>🎉 恭喜您成功登录!</h1>
+                <p>您已通过多因素认证完成安全登录</p>
+            </div>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <h3>🔒 多因素认证</h3>
+                    <p>系统采用用户名密码 + 一次性验证码的双重认证机制，大大提高了账户安全性。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>📧 邮箱验证</h3>
+                    <p>验证码通过邮件发送，确保只有账户所有者能够完成第二重认证。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>⏰ 时效控制</h3>
+                    <p>验证码具有5分钟有效期，一次使用后立即失效，防止重放攻击。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>🛡️ Spring Security</h3>
+                    <p>基于Spring Security 7.0的官方MFA支持，提供企业级安全防护。</p>
+                </div>
+            </div>
+            
+            <div sec:authorize="hasRole('ADMIN')" class="admin-section">
+                <h3>👑 管理员功能</h3>
+                <p>作为管理员，您可以访问系统管理功能：</p>
+                <div class="admin-links">
+                    <a href="/admin/users">用户管理</a>
+                    <a href="/admin/settings">系统设置</a>
+                    <a href="/admin/logs">系统日志</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
