@@ -1,0 +1,96 @@
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+build-info.properties
+.mvn/
+mvnw
+mvnw.cmd
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# Eclipse
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.tar
+
+# Logs
+logs
+*.log
+!logs/.gitkeep
+
+# Tomcat
+*.launch
+.cobertura/
+*.log
+
+# Database
+*.db
+*.db-journal
+
+# Environment specific files
+.env
+config/
+
+# IDE and Editor specific
+*.swp
+*.swo
+*~
+.project
+.classpath
+.c9/
+
+# Testing
+*.tlog
+coverage/
+
+# Spring Boot
+!src/main/resources/application-*.yml
+!src/main/resources/application-*.properties
